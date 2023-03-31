@@ -20,7 +20,7 @@ parkings they have in 1km radius.
  ### Run
   1. Open the cmd/bash and run the following command to pull and build the docker image with ElasticSearch cluster
   
-      ```docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.10.0```
+```docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.10.0```
  
   2. Clone the app and run it in IDE (as a Spring Boot app)
   3. Data ingestion: 
