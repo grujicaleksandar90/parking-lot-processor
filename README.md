@@ -26,7 +26,7 @@ parkings they have in 1km radius.
   3. Data ingestion: 
     Create a folder with name **in** inside the **C:/** (see **inputDir** config in **application.yml**) (Windows users) 
     For the MAC users, you need to change the value of the **inputDir** in **application.yml** and put the whatever location you choose.
-  4. and the app will automatically pick it up and store the data in ElasticSearch. 
+  4. Put the **LA parking lot.csv** inside the newly created folder **C:\in** and the Camel route inside the app will automatically process the file.
   
   Now when we have elasticSearch cluster and our app up and running and the data is present in the repository, we can now start consuming the API endpoints.
  
