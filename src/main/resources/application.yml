@@ -1,0 +1,18 @@
+spring:
+  security:
+    user:
+      name: alex
+      password: alexPL#123
+
+parkinglotprocessor:
+  routing:
+    inputDir: C:/in/
+    moveFailed: C:/in/error
+
+  parking-lot-scoring:
+    0: [0]
+    1: [1,2]
+    2: [3,4]
+    3: [5,6]
+    4: [7,8,9]
+    5: [10,11,12]
