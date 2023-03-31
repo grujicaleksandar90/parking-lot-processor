@@ -15,6 +15,7 @@ parkings they have in 1km radius.
  ### Requirements
  * Java 17
  * Docker
+ * Maven
  * IDE of choice (recommended IntellJ IDEA)
  
  ### Run
@@ -22,7 +23,7 @@ parkings they have in 1km radius.
   
 ```docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.10.0```
  
-  2. Clone the app and run it in IDE (as a Spring Boot app)
+  2. Clone the app and run it in IDE (as a Spring Boot app) or via command line by navigating to the projects folder and running the command **mvn spring-boot:run** (**Note:** for the second option, maven needs to be installed and added to the system env)
   3. Data ingestion: 
     Create a folder with name **in** inside the **C:/** (see **inputDir** config in **application.yml**) (Windows users) 
     For the MAC users, you need to change the value of the **inputDir** in **application.yml** and put the whatever location you choose.
