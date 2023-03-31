@@ -24,8 +24,21 @@ parkings they have in 1km radius.
  
   2. Clone the app and run it in IDE (as a Spring Boot app)
   3. Data ingestion: 
-    Create a folder with name **in** inside the **C:/** (see **inputDir** config in **application.yml**) (Windows users) and the app will automatically pick it up and store the data in ElasticSearch. 
+    Create a folder with name **in** inside the **C:/** (see **inputDir** config in **application.yml**) (Windows users) 
     For the MAC users, you need to change the value of the **inputDir** in **application.yml** and put the whatever location you choose.
+  4. and the app will automatically pick it up and store the data in ElasticSearch. 
   
   Now when we have elasticSearch cluster and our app up and running and the data is present in the repository, we can now start consuming the API endpoints.
-   (Postman collection with credentials will be provided in the email) 
+ 
+  ### Consuming APIs
+   1. **findClosest**
+
+       ```curl --location 'http://localhost:8080/parking-lot/closest?latitude=-89.8125&longitude=20.4612'```
+       
+   2. **calculateScore**
+   
+       ```curl --location 'http://localhost:8080/parking-lot/score?latitude=33.9855269&longitude=-118.4686714'```
+       
+   #### Note:
+   
+   APIs require auth by providing the corresponding username and password (Basic Auth) - **see the application.yml for credentials**
