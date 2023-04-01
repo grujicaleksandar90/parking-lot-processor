@@ -19,7 +19,6 @@ import parking.lot.processor.model.response.ClosestParkingLot;
 import parking.lot.processor.model.response.ParkingLotScore;
 import parking.lot.processor.repository.ParkingLotRepository;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -46,8 +45,8 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public ClosestParkingLot findClosest(double latitude, double longitude) {
         validateCoordinates(latitude, longitude);
         log.info("Finding closest parking lot for latitude ({}) and longitude ({})", latitude, longitude);
-        final Sort sort = Sort.by(new GeoDistanceOrder("location", new GeoPoint(latitude, longitude)).withUnit("km"));
-        final List<SearchHit<ParkingLot>> closestParkingLots = repository.findTopBy(sort);
+        final List<SearchHit<ParkingLot>> closestParkingLots = repository.findTopBy(
+                Sort.by(new GeoDistanceOrder("location", new GeoPoint(latitude, longitude)).withUnit("km")));
 
         if (!CollectionUtils.isEmpty(closestParkingLots)) {
             return new ClosestParkingLot(Double.parseDouble((String) closestParkingLots.get(0).getSortValues().get(0)),
@@ -62,9 +61,8 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public ParkingLotScore calculateScore(double latitude, double longitude) {
         validateCoordinates(latitude, longitude);
         final int score = calculateScore(getNumberOfNearByParkingLots(latitude, longitude), properties.getParkingLotScoring());
-        String scoringMessage = String.format(SCORING_MESSAGE, score, properties.getParkingLotScoring().get(score));
 
-        return new ParkingLotScore(score, scoringMessage);
+        return new ParkingLotScore(score, String.format(SCORING_MESSAGE, score, properties.getParkingLotScoring().get(score)));
     }
 
     private long getNumberOfNearByParkingLots(double latitude, double longitude) {
@@ -75,14 +73,11 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     }
 
     private int calculateScore(Long numberOfParkingLots, Map<Integer, List<Integer>> parkingLotScoring) {
-
-        for (Map.Entry<Integer, List<Integer>> entry : parkingLotScoring.entrySet()) {
-            if(entry.getValue().contains(numberOfParkingLots.intValue())) {
-                return entry.getKey();
-            }
-        }
-
-        return 5;
+        return parkingLotScoring.entrySet().stream()
+                .filter(entry -> entry.getValue().contains(numberOfParkingLots.intValue()))
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(5);
     }
 
     private ParkingLot transformToDao(ParkingLotCsvRows parkingLotCsvRows) {

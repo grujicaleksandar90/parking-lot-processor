@@ -16,7 +16,10 @@ import java.util.Map;
 public class ParkingLotProcessorConfigurationProperties {
 
     @NotNull
-    private RoutingConfig routing;
+    private RoutingProperties routing;
+
+    @NotNull
+    private ElasticSearchProperties elasticSearch;
 
     private Map<Integer, List<Integer>> parkingLotScoring;
 }
