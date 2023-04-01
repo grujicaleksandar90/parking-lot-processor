@@ -8,7 +8,7 @@
 		<version>3.0.5</version>
 		<relativePath/>
 	</parent>
-	<groupId>parking.lot.processor</groupId>
+	<groupId>parkinglotprocessor</groupId>
 	<artifactId>parking-lot-processor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>parking-lot-processor</name>
