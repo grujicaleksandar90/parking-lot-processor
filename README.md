@@ -43,3 +43,4 @@ parkings they have in 1km radius.
    #### Note:
    
    APIs require auth by providing the corresponding username and password (Basic Auth) - **see the application.yml for credentials**
+
