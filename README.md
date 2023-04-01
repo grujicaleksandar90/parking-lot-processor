@@ -45,4 +45,3 @@ docker run -p 9200:9200 -e "discovery.type=single-node" -e xpack.security.enable
    #### Note:
    
    APIs require auth by providing the corresponding username and password (Basic Auth) - **see the application.yml for credentials**
-
