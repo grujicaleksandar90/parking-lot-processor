@@ -29,7 +29,8 @@ docker run -p 9200:9200 -e "discovery.type=single-node" -e xpack.security.enable
   3. Data ingestion: 
     Create a folder with name **in** inside the **C:/** (see **inputDir** config in **application.yml**) (Windows users) 
     For the MAC users, you need to change the value of the **inputDir** and **moveFailed** in **application.yml** and put the whatever locations you choose.
-  4. Put the **LA parking lot.csv** (from the email) inside the newly created folder **C:\in** and the Camel route inside the app will automatically process the file.
+  4. Put the **LA parking lot.csv** (from the resources folder) inside the newly created folder **C:\in** and the Camel route inside the app will automatically process the file.
+   Or keep it in the resources folder and change the config in the **application.yml**
   
   Now when we have elasticSearch cluster and our app up and running and the data is present in the repository, we can now start consuming the API endpoints.
  
